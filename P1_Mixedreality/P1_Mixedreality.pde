@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
 // main file
 
 void setup() {
@@ -42,4 +39,7 @@ pop();
 text();
  
 }
->>>>>>> Stashed changes
+
+
+// main file
+
