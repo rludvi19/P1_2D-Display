@@ -1,11 +1,46 @@
 // main file
 
 void setup() {
-  size(1000, 690);
+  size(1500, 690);
+  sidebar = new Sidebars();
+  scenes = new Scenes();
+}
+
+
+void draw() {
+  background(36, 110, 169);
+  switch(scene) {
+    case 0:
+      sidebar.display();
+      sidebar.clicked();
+      scenes.display();
+      break;
+    case 1:
+      sidebar.display();
+      sidebar.clicked();
+      break;
+    case 2:
+      sidebar.display();
+      sidebar.clicked();
+      break;
+    case 3:
+      sidebar.display();
+      sidebar.clicked();
+      break;
+    case 4:
+      sidebar.display();
+      sidebar.clicked();
+      break;
+    case 5:
+      sidebar.display();
+      sidebar.clicked();
+      break;
+  }
 }
 
 
 
+/*
 //Drawing Background
 void draw() {
   fill(36, 110, 169);
@@ -42,4 +77,4 @@ text();
 
 
 // main file
-
+*/
