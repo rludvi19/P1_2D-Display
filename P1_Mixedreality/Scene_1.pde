@@ -1,4 +1,4 @@
-
+/*
 //Hver scene er en funktion fra 1-5
 
 
@@ -30,3 +30,4 @@ void text(){
 text(s, 200, 600, 700, 900); 
 pop();
 }
+*/

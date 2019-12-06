@@ -1,13 +1,18 @@
 class Sidebars {
-  int sidebarMargin = 10;
-  int sidebarWidth = 150;
+  int sidebarWidth = 170;
   PImage[] sidebarLogos;
-  color sidebarColor = color(50,50,209);
+  PImage glow;
+  PImage shadow;
+  color backgroundColor  = color(200);
+  color chosenColor = color(60, 219, 248);
+
 
 
 
   Sidebars() {
     sidebarLogos = new PImage[sceneAmount];
+    glow = loadImage("sidebar/glow.png");
+    shadow =loadImage("sidebar/Shadow.png");
     for(int i = 0; i < sceneAmount; i++) {
       sidebarLogos[i] = loadImage("sidebar/" + i + ".png");
     }
@@ -15,27 +20,39 @@ class Sidebars {
   
   
   void display() {
-    fill(sidebarColor);
-    rect(0,0,sidebarWidth + sidebarMargin * 2, height);
+    push();
+    noStroke();
+    fill(backgroundColor);
+    rect(0, 0, sidebarWidth, height);
     for(int i = 0; i < sceneAmount; i++){
-      fill(30,100,150);
-      image(sidebarLogos[i], sidebarMargin, sidebarMargin + (i * height / sceneAmount ), sidebarWidth, height / sceneAmount - sidebarMargin*2);
       if (i == scene) {
         push();
-        fill(255,150);
-        rect(sidebarMargin, sidebarMargin + (i * height / sceneAmount ), sidebarWidth, height / sceneAmount - sidebarMargin*2);
+        fill(chosenColor);
+        rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
         pop();
       }
+      fill(30,100,150);
+      image(sidebarLogos[i], 0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
+      if (i == scene) {
+        image(glow,0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
+      }
     }
+    image(shadow,0, 0);
+    pop();
   }
   
   void clicked() {
     for(int i = 0; i < sceneAmount; i++){
       if( mousePressed == true &&
-          mouseX >= sidebarMargin &&
-          mouseX <= sidebarMargin + sidebarWidth &&
-          mouseY >= sidebarMargin + (i * height / sceneAmount ) &&
-          mouseY <= sidebarMargin + (i * height / sceneAmount ) + height / sceneAmount - sidebarMargin*2) {
+          mouseX >= 0 &&
+          mouseX <= sidebarWidth &&
+          mouseY >= (i * height / sceneAmount ) &&
+          mouseY <= (i * height / sceneAmount ) + height / sceneAmount) {
+            push();
+            noStroke();
+            fill(125,100);
+            rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
+            pop();
             scene = i;
             scrolled = 0;
           }
