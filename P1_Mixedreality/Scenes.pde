@@ -1,25 +1,41 @@
 class Scenes {
-  PImage[] texts;
-  PImage[] SlideScene0;
-  PImage[] SlideScene1;
-  PImage[] SlideScene2;
-  PImage[] SlideScene3;
-  PImage[] SlideScene4;
-  PImage border;
-  int slideAmount = 4;
-  int slider;
-  int slideTimer;
-  int slideshowPosX = 260;
-  int slideChangeTime = 150;
-  int textPosY = 100;
-  int textPosX = 1000;
-  int textSizeWidth = 400;
-  int textSizeHeight = 500;
-  int textMargin = 10;
-  int transparency = 255;
-  boolean fade = false;
+  
+  //slideshow variables
+    //image arrays for the slides on each scene
+    PImage[] SlideScene0;
+    PImage[] SlideScene1;
+    PImage[] SlideScene2;
+    PImage[] SlideScene3;
+    PImage[] SlideScene4;
+    
+    //shadow border for image and text
+    PImage border;
+    
+    int slideAmount = 4;       // amount of images
+    int slider;                // Current image
+    int slideCounter;          // Counter for how long the image have been on screen
+    int slideshowPosX = 260;   // Position of the slideshows left side
+    int slideChangeTime = 150; // when to change to the next image
+    int transparency = 255;    // transparency of the image (255 means no transparency)
+    boolean fade = false;      // indicates when the image should begin to fade away and when to go back ind 
+    
+  //text variables
+    //text as image files 
+    PImage[] texts;
+    
+    //text position and size
+    int textPosY = 100;
+    int textPosX = 1000;
+    int textSizeWidth = 400;
+    int textSizeHeight = 500;
+    int textMargin = 10;
+    
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+  // Constructor for the scene class 
   Scenes() {
+    
+    //determines the length of the image array
     texts = new PImage[sceneAmount];
     SlideScene0 = new PImage[slideAmount];
     SlideScene1 = new PImage[slideAmount];
@@ -50,10 +66,10 @@ class Scenes {
   void displaySlide() {
     fade();
     if (fade == false) {
-      slideTimer++;
+      slideCounter++;
     }
-    if (slideTimer == slideChangeTime) {
-      slideTimer = 0;
+    if (slideCounter == slideChangeTime) {
+      slideCounter = 0;
       fade = true;
     }
     fill(230);

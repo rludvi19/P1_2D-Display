@@ -5,7 +5,7 @@ class Sidebars {
   PImage shadow;
   color backgroundColor  = color(200);
   
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -56,7 +56,7 @@ class Sidebars {
             scene = i;
             scrolled = 0;
             scenes.transparency = 255;
-            scenes.slideTimer = 0;
+            scenes.slideCounter = 0;
             scenes.slider = 0;
             scenes.fade = false;
           }
