@@ -4,7 +4,7 @@ class Sidebars {
   PImage glow;
   PImage shadow;
   color backgroundColor  = color(200);
-  color chosenColor = color(60, 219, 248);
+  
 
 
 

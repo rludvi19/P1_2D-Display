@@ -41,7 +41,7 @@ class Scenes {
 
   void displayText() {
     image(border, slideshowPosX - 20, textPosY - textMargin - 18);
-    fill(200);
+    fill(121,157,156);
     rect(textPosX - textMargin, textPosY - textMargin, textSizeWidth + textMargin * 2, textSizeHeight + textMargin * 2);
     image(texts[scene], textPosX, textPosY, textSizeWidth, textSizeHeight, 0, 0 + scrolled, texts[scene].width, textSizeHeight + scrolled);
   }
