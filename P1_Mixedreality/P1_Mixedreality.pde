@@ -19,39 +19,13 @@ void setup() {
 
 void draw() {
   background(100);
-  switch(scene) {
-    case 0:
-      sidebar.display();
-      sidebar.clicked();
-      scenes.displayText();
-      scenes.displaySlide();
-      break;
-    case 1:
-      sidebar.display();
-      sidebar.clicked();
-      break;
-    case 2:
-      sidebar.display();
-      sidebar.clicked();
-      break;
-    case 3:
-      sidebar.display();
-      sidebar.clicked();
-      break;
-    case 4:
-      sidebar.display();
-      sidebar.clicked();
-      break;
-    case 5:
-      sidebar.display();
-      sidebar.clicked();
-      break;
-  }
+  sidebar.display();
+  sidebar.clicked();
+  scenes.displayText();
+  scenes.displaySlide();
 }
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   scrolled +=  e * scrollSpeed;
 }
-
-  
