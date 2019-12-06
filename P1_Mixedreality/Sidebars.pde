@@ -55,6 +55,10 @@ class Sidebars {
             pop();
             scene = i;
             scrolled = 0;
+            scenes.transparency = 255;
+            scenes.slideTimer = 0;
+            scenes.slider = 0;
+            scenes.fade = false;
           }
     }
   }
