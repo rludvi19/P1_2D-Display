@@ -48,7 +48,7 @@ void mouseWheel(MouseEvent event) {
   // checks if scrolled is within the texts size
   if ( scrolled >= 0 && scrolled < scenes.texts[scene].height) {
 
-    //getCount returns a positive (+1) when scrulled up, and a negative (-1) when down.
+    //getCount returns a positive (+1) when scrolled up, and a negative (-1) when down.
     float e = event.getCount();
     scrolled +=  e * scrollSpeed;
   }
