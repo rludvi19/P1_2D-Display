@@ -20,6 +20,7 @@ class Scenes {
   boolean fade = false;      // indicates when the image should begin to fade away and when to go back ind
   int fadeBoundary = 30;
   int fadeSpeed = 20;
+  color slideshowFadeColor = color(230);
 
   // Text variables
   //text as image files 
@@ -31,6 +32,7 @@ class Scenes {
   int textSizeWidth = 400;
   int textSizeHeight = 500;
   int textMargin = 10;
+  color textBackground = color(121, 157, 156);
 
   //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +72,7 @@ class Scenes {
     image(border, slideshowPosX - 20, textPosY - textMargin - 18);
 
     // color of text background
-    fill(121, 157, 156);
+    fill(textBackground);
 
     //background for text
     rect(textPosX - textMargin, textPosY - textMargin, textSizeWidth + textMargin * 2, textSizeHeight + textMargin * 2);
@@ -97,31 +99,34 @@ class Scenes {
       slideCounter = 0;
       fade = true;
     }
-    fill(230);
+    fill(slideshowFadeColor);
 
     // draws background for slideshow so when it fades it seems more normal
-    rect(slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+    rect(slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
     push();
 
     // make the image transparent ( fade effect )
-    tint(255, transparency);
+    if (transparency < 255) {
+      tint(255, transparency);
+    }
+
 
     // switch/case to determine what images to use, out from the scene variable
     switch(scene) {
     case 0:
-      image(SlideScene0[slider], slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+      image(SlideScene0[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     case 1:
-      image(SlideScene1[slider], slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+      image(SlideScene1[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     case 2:
-      image(SlideScene2[slider], slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+      image(SlideScene2[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     case 3:
-      image(SlideScene3[slider], slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+      image(SlideScene3[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     case 4:
-      image(SlideScene4[slider], slideshowPosX, textPosY - textMargin, 730, textSizeHeight + textMargin * 2);
+      image(SlideScene4[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     }
     pop();

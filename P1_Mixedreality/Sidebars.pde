@@ -4,6 +4,7 @@ class Sidebars {
   PImage glow;
   PImage shadow;
   color backgroundColor  = color(200);
+  color clickedColor = color(125,100);
 
   //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -43,6 +44,7 @@ class Sidebars {
         rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
         pop();
       }
+      
 
       // Draws the icons one after the others with a determined distance between them
       image(sidebarLogos[i], 0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
@@ -75,7 +77,7 @@ class Sidebars {
         // Draws a white rectancle ontop of the clicked icon
         push();
         noStroke();
-        fill(125, 100);
+        fill(clickedColor);
         rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
         pop();
 
