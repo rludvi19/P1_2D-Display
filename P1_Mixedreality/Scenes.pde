@@ -11,7 +11,7 @@ class Scenes {
   // Shadow border for image and text
   PImage border;
 
-  int slideAmount = 4;       // amount of images
+  int[] slideAmount;       // amount of images
   int slider;                // Current image
   int slideCounter;          // Counter for how long the image have been on screen
   int slideshowPosX = 260;   // Position of the slideshows left side
@@ -40,12 +40,19 @@ class Scenes {
   Scenes() {
 
     // Determines the length of the image arrays
+    slideAmount = new int[sceneAmount];
+    slideAmount[0] = 4;
+    slideAmount[1] = 4;
+    slideAmount[2] = 4;
+    slideAmount[3] = 4;
+    slideAmount[4] = 6;
+
     texts = new PImage[sceneAmount];
-    SlideScene0 = new PImage[slideAmount];
-    SlideScene1 = new PImage[slideAmount];
-    SlideScene2 = new PImage[slideAmount];
-    SlideScene3 = new PImage[slideAmount];
-    SlideScene4 = new PImage[slideAmount];
+    SlideScene0 = new PImage[slideAmount[0]];
+    SlideScene1 = new PImage[slideAmount[1]];
+    SlideScene2 = new PImage[slideAmount[2]];
+    SlideScene3 = new PImage[slideAmount[3]];
+    SlideScene4 = new PImage[slideAmount[4]];
 
     // Loads the border image
     border = loadImage("slideShow/border.png");
@@ -56,12 +63,26 @@ class Scenes {
     }
 
     // load the slideshow images into the array
-    for (int i = 0; i < slideAmount; i++) {
-      SlideScene0[i] = loadImage("slideShow/scene0/slide" + i + ".png");
-      SlideScene1[i] = loadImage("slideShow/scene1/slide" + i + ".png");
-      SlideScene2[i] = loadImage("slideShow/scene2/slide" + i + ".png");
-      SlideScene3[i] = loadImage("slideShow/scene3/slide" + i + ".png");
-      SlideScene4[i] = loadImage("slideShow/scene4/slide" + i + ".png");
+    for (int d = 0; d < sceneAmount; d++) {
+      for (int i = 0; i < slideAmount[d]; i++) {
+        switch(d) {
+        case 0:
+          SlideScene0[i] = loadImage("slideShow/scene0/slide" + i + ".png");
+          break;
+        case 1:
+          SlideScene1[i] = loadImage("slideShow/scene1/slide" + i + ".png");
+          break;
+        case 2:
+          SlideScene2[i] = loadImage("slideShow/scene2/slide" + i + ".png");
+          break;
+        case 3:
+          SlideScene3[i] = loadImage("slideShow/scene3/slide" + i + ".png");
+          break;
+        case 4:
+          SlideScene4[i] = loadImage("slideShow/scene4/slide" + i + ".png");
+          break;
+        }
+      }
     }
   }
 
@@ -151,7 +172,7 @@ class Scenes {
       fade = false;
 
       // changes to next image in the slideshow
-      slider = (slider + 1) % slideAmount;
+      slider = (slider + 1) % slideAmount[scene];
     }
   }
 }
