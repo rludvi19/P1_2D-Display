@@ -5,7 +5,8 @@ class Sidebars {
   PImage shadow;
   color backgroundColor  = color(200);
   color clickedColor = color(125,100);
-
+  color chosenColor = color(80, 219, 248);
+  
   //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -90,6 +91,7 @@ class Sidebars {
         scenes.slideCounter = 0;
         scenes.slider = 0;
         scenes.fade = false;
+        movie.stop();
       }
     }
   }

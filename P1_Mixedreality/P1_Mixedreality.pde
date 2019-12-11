@@ -1,3 +1,5 @@
+import processing.video.*;
+
 // Global variabels
 //scenes
 int scene = 0;
@@ -7,13 +9,16 @@ int sceneAmount = 5;
 int scrolled = 0;
 int scrollSpeed = 10;
 
-//colors and bacground image
-color chosenColor = color(60, 219, 248);
+//bacground image
 PImage background;
 
 //scene and sidebar class
 Sidebars sidebar;
 Scenes scenes;
+
+//Movie
+Movie movie;
+boolean playing;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -24,7 +29,12 @@ void setup() {
   //Creates objects from classes
   sidebar = new Sidebars();
   scenes = new Scenes();
-
+  
+  // load movie and determin playtype
+  movie = new Movie(this, "slideShow/Esper.mov");
+  //movie.loop();
+  
+  
   //loads background image
   background = loadImage("background.png");
 }
@@ -59,4 +69,16 @@ void mouseWheel(MouseEvent event) {
   } else if (scrolled > scenes.texts[scene].height - (scenes.textSizeHeight / 2) ) {
     scrolled = scenes.texts[scene].height - (scenes.textSizeHeight / 2);
   }
+}
+void mouseClicked() {
+  if(scene == 4 &&
+     mouseX > scenes.slideshowPosX && mouseX < scenes.textPosX - scenes.slideshowPosX - scenes.textMargin ) {
+    movie.play();
+  }
+  
+}
+
+
+void movieEvent(Movie m) {
+  m.read();
 }

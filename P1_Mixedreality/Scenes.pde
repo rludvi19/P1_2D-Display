@@ -8,8 +8,14 @@ class Scenes {
   PImage[] SlideScene3;
   PImage[] SlideScene4;
 
+  // video Placement
+  int videoCrop = 200; //crops the video to fit the space
+
   // Shadow border for image and text
   PImage border;
+  int borderDisplace = 20;
+  
+  PImage videoBackground;
 
   int[] slideAmount;       // amount of images
   int slider;                // Current image
@@ -44,18 +50,20 @@ class Scenes {
     slideAmount[0] = 4;
     slideAmount[1] = 4;
     slideAmount[2] = 4;
-    slideAmount[3] = 4;
-    slideAmount[4] = 6;
+    slideAmount[3] = 6;
+    slideAmount[4] = 1;
 
     texts = new PImage[sceneAmount];
     SlideScene0 = new PImage[slideAmount[0]];
     SlideScene1 = new PImage[slideAmount[1]];
     SlideScene2 = new PImage[slideAmount[2]];
     SlideScene3 = new PImage[slideAmount[3]];
-    SlideScene4 = new PImage[slideAmount[4]];
+
+    //SlideScene4 = new PImage[slideAmount[4]];
 
     // Loads the border image
     border = loadImage("slideShow/border.png");
+    videoBackground = loadImage("slideShow/scene4/Background.PNG");
 
     // Load in the text as images into the array
     for (int i = 0; i < sceneAmount; i++) {
@@ -78,9 +86,6 @@ class Scenes {
         case 3:
           SlideScene3[i] = loadImage("slideShow/scene3/slide" + i + ".png");
           break;
-        case 4:
-          SlideScene4[i] = loadImage("slideShow/scene4/slide" + i + ".png");
-          break;
         }
       }
     }
@@ -90,7 +95,7 @@ class Scenes {
   void displayText() {
 
     // Draws the border on the slideshow aswell as the text
-    image(border, slideshowPosX - 20, textPosY - textMargin - 18);
+    image(border, slideshowPosX - borderDisplace, textPosY - textMargin - borderDisplace);
 
     // color of text background
     fill(textBackground);
@@ -147,7 +152,10 @@ class Scenes {
       image(SlideScene3[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       break;
     case 4:
-      image(SlideScene4[slider], slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
+    
+      //Plays a movie using the video library
+      image(videoBackground, slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
+      image(movie, slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2, videoCrop, 0, movie.width, movie.height);
       break;
     }
     pop();
@@ -155,24 +163,25 @@ class Scenes {
 
   // function to create the fade effect
   void fade() {
+    if (scene != 4) {
+      // checks whether fade is true
+      if (fade == true) {
 
-    // checks whether fade is true
-    if (fade == true) {
+        //begins to degrees the transparency variable by 20
+        transparency -= fadeSpeed;
 
-      //begins to degrees the transparency variable by 20
-      transparency -= fadeSpeed;
+        // increment the transparency variable back to normal if fade equeals false
+      } else if (transparency < 255) {
+        transparency += fadeSpeed;
+      }
 
-      // increment the transparency variable back to normal if fade equeals false
-    } else if (transparency < 255) {
-      transparency += fadeSpeed;
-    }
+      //determines when to change picture and begin to fade it back in
+      if (transparency < fadeBoundary) {
+        fade = false;
 
-    //determines when to change picture and begin to fade it back in
-    if (transparency < fadeBoundary) {
-      fade = false;
-
-      // changes to next image in the slideshow
-      slider = (slider + 1) % slideAmount[scene];
+        // changes to next image in the slideshow
+        slider = (slider + 1) % slideAmount[scene];
+      }
     }
   }
 }
