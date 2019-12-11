@@ -47,7 +47,7 @@ class Scenes {
 
     // Determines the length of the image arrays
     slideAmount = new int[sceneAmount];
-    slideAmount[0] = 4;
+    slideAmount[0] = 3;
     slideAmount[1] = 4;
     slideAmount[2] = 3;
     slideAmount[3] = 6;

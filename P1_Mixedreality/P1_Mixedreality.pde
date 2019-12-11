@@ -72,7 +72,7 @@ void mouseWheel(MouseEvent event) {
 }
 void mouseClicked() {
   if(scene == 4 &&
-     mouseX > scenes.slideshowPosX && mouseX < scenes.textPosX - scenes.slideshowPosX - scenes.textMargin ) {
+     mouseX > scenes.slideshowPosX && mouseX < scenes.textPosX - scenes.slideshowPosX - scenes.textMargin ) { 
     movie.play();
   }
   
