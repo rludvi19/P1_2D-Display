@@ -19,7 +19,7 @@ class Scenes {
 
   int[] slideAmount;       // amount of images
   int slider;                // Current image
-  int slideCounter;          // Counter for how long the image have been on screen
+  int slideCounter = 100;          // Counter for how long the image have been on screen
   int slideshowPosX = 260;   // Position of the slideshows left side
   int slideChangeTime = 150; // when to change to the next image
   int transparency = 255;    // transparency of the image (255 means no transparency)
@@ -49,9 +49,9 @@ class Scenes {
     slideAmount = new int[sceneAmount];
     slideAmount[0] = 4;
     slideAmount[1] = 4;
-    slideAmount[2] = 4;
+    slideAmount[2] = 3;
     slideAmount[3] = 6;
-    slideAmount[4] = 1;
+
 
     texts = new PImage[sceneAmount];
     SlideScene0 = new PImage[slideAmount[0]];
