@@ -153,7 +153,7 @@ class Scenes {
       break;
     case 4:
     
-      //Plays a movie using the video library
+      // display a video using the video library
       image(videoBackground, slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2);
       image(movie, slideshowPosX, textPosY - textMargin, textPosX - slideshowPosX - textMargin, textSizeHeight + textMargin * 2, videoCrop, 0, movie.width, movie.height);
       break;

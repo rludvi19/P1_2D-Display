@@ -70,6 +70,8 @@ void mouseWheel(MouseEvent event) {
     scrolled = scenes.texts[scene].height - (scenes.textSizeHeight / 2);
   }
 }
+
+//checks if the scene is where the movie is, and if clicked inside the videos x coordinates
 void mouseClicked() {
   if(scene == 4 &&
      mouseX > scenes.slideshowPosX && mouseX < scenes.textPosX - scenes.slideshowPosX - scenes.textMargin ) { 
@@ -78,7 +80,7 @@ void mouseClicked() {
   
 }
 
-
+// Reads the next frame so it an be displayed
 void movieEvent(Movie m) {
   m.read();
 }
