@@ -1,5 +1,9 @@
 import processing.video.*;
 
+//Movie
+Movie movie;
+boolean playing;
+
 // Global variabels
 //scenes
 int scene = 0;
@@ -16,9 +20,7 @@ PImage background;
 Sidebars sidebar;
 Scenes scenes;
 
-//Movie
-Movie movie;
-boolean playing;
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -76,6 +78,7 @@ void mouseClicked() {
   if(scene == 4 &&
      mouseX > scenes.slideshowPosX && mouseX < scenes.textPosX - scenes.slideshowPosX - scenes.textMargin ) { 
     movie.play();
+    playing = true;
   }
   
 }

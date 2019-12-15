@@ -92,6 +92,7 @@ class Sidebars {
         scenes.slider = 0;
         scenes.fade = false;
         movie.stop();
+        playing = false;
       }
     }
   }
