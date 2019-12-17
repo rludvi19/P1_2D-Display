@@ -75,24 +75,26 @@ class Sidebars {
         mouseY >= (i * height / sceneAmount ) &&
         mouseY <= (i * height / sceneAmount ) + height / sceneAmount) {
 
-        // Draws a white rectancle ontop of the clicked icon
-        push();
-        noStroke();
-        fill(clickedColor);
-        rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
-        pop();
 
-        //changes scene to the clicked scene
-        scene = i;
 
-        //resets everything to prepare for scene change
-        scrolled = 0;
-        scenes.transparency = 255;
-        scenes.slideCounter = 0;
-        scenes.slider = 0;
-        scenes.fade = false;
-        movie.stop();
-        playing = false;
+          // Draws a white rectancle ontop of the clicked icon
+          push();
+          noStroke();
+          fill(clickedColor);
+          rect(0, (i * height / sceneAmount ), sidebarWidth, height / sceneAmount);
+          pop();
+
+          //changes scene to the clicked scene
+          scene = i;
+
+          //resets everything to prepare for scene change
+          scrolled = 0;
+          scenes.transparency = 255;
+          scenes.slideCounter = 0;
+          scenes.slider = 0;
+          scenes.fade = false;
+          movie.stop();
+          playing = false;
       }
     }
   }
